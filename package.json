@@ -24,10 +24,10 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "@gilbarbara/eslint-config"
     ]
   },
+  "prettier": "@gilbarbara/prettier-config",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@gilbarbara/eslint-config": "^0.2.6",
+    "@gilbarbara/prettier-config": "^0.1.0"
   }
 }

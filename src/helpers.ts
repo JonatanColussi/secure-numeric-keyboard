@@ -1,9 +1,20 @@
-export function concatArrayPositions<T extends string>(acc: T[], current: T[]) {
+/* eslint-disable security/detect-object-injection */
+function concatArrayPositions<T extends string>(acc: T[], current: T[]) {
   return acc.map((value, index) => value + current[index]);
 }
 
-export function removeDuplicates<T>(element: T, index: number, array: T[]) {
+function removeDuplicates<T>(element: T, index: number, array: T[]) {
   return array.indexOf(element) === index;
+}
+
+function arrayPad<T>(length: number) {
+  return (item: T[]) => {
+    while (item.length < length) {
+      item.push(...item);
+    }
+
+    return item;
+  };
 }
 
 export function splitIntoChunks<T>(input: T[], chunkSize: number) {
@@ -35,12 +46,20 @@ export function isEven(input: number) {
   return input % 2 === 0;
 }
 
-export function arrayPad<T>(length: number) {
-  return (item: T[]) => {
-    while (item.length < length) {
-      item.push(...item);
-    }
+export function calculatePossibilities<T extends string | number>(options: T[][]) {
+  let multiplier = 1;
 
-    return item;
-  };
+  return options.length
+    ? options
+        .reduce((acc, item) => {
+          acc.push(item.map(n => Array(multiplier).fill(n.toString())).flat());
+
+          multiplier *= 2;
+
+          return acc;
+        }, [] as string[][])
+        .map(arrayPad(multiplier))
+        .reduce(concatArrayPositions)
+        .filter(removeDuplicates)
+    : [];
 }

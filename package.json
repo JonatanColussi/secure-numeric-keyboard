@@ -1,47 +1,57 @@
 {
-  "name": "bank-keyboard",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@colussi/react-secure-numeric-keyboard",
+  "version": "0.0.0",
+  "description": "A secure numeric keyboard for React apps",
+  "author": "Jonatan Colussi <jonatancolussi81@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JonatanColussi/secure-numeric-keyboard"
+  },
+  "bugs": {
+    "url": "https://github.com/JonatanColussi/secure-numeric-keyboard/issues"
+  },
+  "homepage": "https://github.com/JonatanColussi/secure-numeric-keyboard",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "./lib",
+  "files": [
+    "esm",
+    "lib",
+    "src"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@colussi/eslint-config": "^1.0.10",
+    "@colussi/prettier-config": "^1.0.3",
+    "@colussi/tsconfig": "^2.0.0",
+    "@types/react": "^18.0.18",
+    "husky": "^8.0.1",
+    "repo-tools": "^0.2.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.2"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.43",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "react": "^17.0.0 || ^18.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc",
+    "build:esm": "tsc -m es6 --outDir esm",
+    "clean": "rimraf lib/* && rimraf esm/*",
+    "lint": "eslint --fix src",
+    "typecheck": "tsc --noEmit",
+    "validate": "npm run lint && npm run typecheck",
+    "prepublishOnly": "npm run validate && npm run build",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
-      "@gilbarbara/eslint-config"
+      "@colussi/eslint-config"
     ]
   },
-  "prettier": "@gilbarbara/prettier-config",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@gilbarbara/eslint-config": "^0.2.6",
-    "@gilbarbara/prettier-config": "^0.1.0"
-  }
+  "prettier": "@colussi/prettier-config"
 }

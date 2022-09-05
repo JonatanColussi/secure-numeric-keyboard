@@ -1,7 +1,6 @@
-```typescript
 import React, { useCallback, useRef } from 'react';
 
-import SecureNumericKeyboard, { ISecureNumericKeyboard } from '@colussi/react-secure-numeric-keyboard';
+import SecureNumericKeyboard, { ISecureNumericKeyboard } from './secureNumericKeyboard';
 
 export default function App() {
   const keyboardRef = useRef<ISecureNumericKeyboard>({
@@ -25,11 +24,12 @@ export default function App() {
       </SecureNumericKeyboard>
       <br />
       <br />
+      <br />
+      <br />
+      <br />
       <button onClick={handleClick} type="button">
         get possibilities
       </button>
     </>
   );
 }
-
-```

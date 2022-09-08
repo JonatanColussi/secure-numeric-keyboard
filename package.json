@@ -12,8 +12,8 @@
   },
   "homepage": "https://github.com/JonatanColussi/secure-numeric-keyboard",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
+  "main": "lib/secureNumericKeyboard.js",
+  "module": "esm/secureNumericKeyboard.js",
   "types": "./lib",
   "files": [
     "esm",
@@ -35,7 +35,7 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "react": "^17.0.0 || ^18.0.0"
+    "react": "^18.2.0"
   },
   "scripts": {
     "build": "npm run clean && npm run build:cjs && npm run build:esm",

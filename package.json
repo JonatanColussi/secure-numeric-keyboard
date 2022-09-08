@@ -1,6 +1,6 @@
 {
   "name": "@colussi/react-secure-numeric-keyboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A secure numeric keyboard for React apps",
   "author": "Jonatan Colussi <jonatancolussi81@gmail.com>",
   "repository": {
